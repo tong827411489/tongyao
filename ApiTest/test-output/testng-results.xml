@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="10678" started-at="2016-12-29T03:20:00Z" finished-at="2016-12-29T03:20:11Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="10678" started-at="2016-12-29T03:20:00Z" finished-at="2016-12-29T03:20:11Z">
+      <class name="com.Interface.run.LoginRunCase">
+        <test-method status="PASS" signature="LoginApi()[pri:0, instance:com.Interface.run.LoginRunCase@5d769b56]" name="LoginApi" duration-ms="10662" started-at="2016-12-29T11:20:00Z" finished-at="2016-12-29T11:20:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginApi -->
+      </class> <!-- com.Interface.run.LoginRunCase -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
