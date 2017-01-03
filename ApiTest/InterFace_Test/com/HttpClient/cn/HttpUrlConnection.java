@@ -26,6 +26,7 @@ public class HttpUrlConnection {
 		HttpURLConnection conn = null;
 		PrintWriter pw = null;
 		BufferedReader br = null;
+		
 		StringBuffer sb = null;
 		String line = null;
 		String response = null;
