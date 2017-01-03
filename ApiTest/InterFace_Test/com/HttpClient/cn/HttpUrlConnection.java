@@ -27,13 +27,14 @@ public class HttpUrlConnection {
 		PrintWriter pw = null;
 		BufferedReader br = null;
 		
-		StringBuffer sb = null;
+		StringBuffer sb = new StringBuffer();
 		String line = null;
 		String response = null;
 	
 			try {
 				conn = (HttpURLConnection) new URL(Url).openConnection();
 				conn.setDoOutput(true);
+	            conn.setDoInput(true);
 				conn.setReadTimeout(20000);
 				conn.setConnectTimeout(20000);
 				conn.setRequestProperty("accept", "*/*");
@@ -93,13 +94,14 @@ public class HttpUrlConnection {
 		PrintWriter pw = null;
 		BufferedReader br = null;
 		
-		StringBuffer sb = null;
+		StringBuffer sb = new StringBuffer();
 		String line = null;
 		String response = null;
 	
 			try {
 				conn = (HttpURLConnection) new URL(Url).openConnection();
 				conn.setDoOutput(true);
+	            conn.setDoInput(true);
 				conn.setReadTimeout(20000);
 				conn.setConnectTimeout(20000);
 				conn.setRequestProperty("accept", "*/*");
@@ -157,13 +159,14 @@ public class HttpUrlConnection {
 		PrintWriter pw = null;
 		BufferedReader br = null;
 		
-		StringBuffer sb = null;
+		StringBuffer sb = new StringBuffer();
 		String line = null;
 		String response = null;
 	
 			try {
 				conn = (HttpURLConnection) new URL(Url).openConnection();
 				conn.setDoOutput(true);
+	            conn.setDoInput(true);
 				conn.setReadTimeout(20000);
 				conn.setConnectTimeout(20000);
 				conn.setRequestProperty("accept", "*/*");
@@ -223,7 +226,7 @@ public class HttpUrlConnection {
 		PrintWriter pw = null;
 		BufferedReader br = null;
 		
-		StringBuffer sb = null;
+		StringBuffer sb = new StringBuffer();
 		String line = null;
 		String response = null;
 		
@@ -231,6 +234,7 @@ public class HttpUrlConnection {
 			try {
 				conn = (HttpURLConnection) new URL(Url).openConnection();
 				conn.setDoOutput(true);
+	            conn.setDoInput(true);
 				conn.setReadTimeout(20000);
 				conn.setConnectTimeout(20000);
 				conn.setRequestProperty("accept", "*/*");
@@ -276,5 +280,12 @@ public class HttpUrlConnection {
 				
 			}
 		return response;
+	} 
+	
+	public static void main(String[] args){
+		HttpUrlConnection hc = new HttpUrlConnection();
+		String m = hc.HttpUrlConnectionPost("http://114.55.55.41:8090/credit/queryCreditStatus.html", 
+				"key=4aacccf46ea51761cf81a0caaa4f206d&accreditCode=20015137001001201612150103");
+		System.out.println(m);
 	}
 }
