@@ -29,6 +29,7 @@ public class Jsoup_Http {
 		return doc;
 	}
 
+	
 	/**
 	 * @param 获取Cookies
 	 * @return 返回Cookies

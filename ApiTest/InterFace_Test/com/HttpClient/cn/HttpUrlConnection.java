@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 public class HttpUrlConnection {
 	
 	private static Logger logger = Logger.getLogger(HttpUrlConnection.class);
+	
 	httpClientCookies hcc = new httpClientCookies();
 	/**
 	 * @param HttpUrlConnection
