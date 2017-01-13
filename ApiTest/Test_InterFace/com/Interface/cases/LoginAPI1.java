@@ -56,28 +56,32 @@ public class LoginAPI1 {
 		List<Map<String, String>> data = null;
 		boolean flag = false;
 		
-		url = ExcelUtil.getInstance().readExcelCell(1,2);
-		method = ExcelUtil.getInstance().readExcelCell(1,4);
-		act = ExcelUtil.getInstance().readExcelCell(1,3);
+//		url = ExcelUtil.getInstance().readExcelCell(1,2);
+//		method = ExcelUtil.getInstance().readExcelCell(1,4);
+//		act = ExcelUtil.getInstance().readExcelCell(1,3);
 //		param = ExcelUtil.getInstance().readExcelCell(1, 12);
 //		flag = MobileApiTools.isArgEquals(1, 5, TITLE_LINE_INDEX);
 		
-		if (url.equals("") || act.equals("") ||method.equals("") ) {
-			logger.debug("请检查 Excel 中 Interface、Act、Method、ArgName 是否设置正确...");
-			System.exit(-1);
-		}
+//		if (url.equals("") || act.equals("") ||method.equals("") ) {
+//			logger.debug("请检查 Excel 中 Interface、Act、Method、ArgName 是否设置正确...");
+//			System.exit(-1);
+//		}
 		data = ExcelUtil.getInstance().readExcelAllData(0);
 		if (data != null&!data.equals("")) {
 			for (int i = 0; i < data.size(); i++) {
 				Map<String, String> map = data.get(i);
 				if (!(map.get("CaseID").equals(""))) {
+					url = map.get("Interface");
+					method = map.get("Method");
+					
 //					String account = map.get(ACCOUNT);
 //					String password = map.get(PASSWORD);
 					String state = map.get("State");
-					String expectedResult = map.get("ExpecteResult");
+					String expectedResult = map.get("ExpectedResult");
 					
 					String param = map.get("Param");
-					Map<String, String> result = HttpRequester.sendPost(method, url, param);
+					String header = map.get("Header");
+					Map<String, String> result = HttpRequester.sendPost(method, url, param,header);
 					String code = result.get("map");
 					String rsTmp = result.get("result");
 					
@@ -93,7 +97,7 @@ public class LoginAPI1 {
 					
 					//设置单元格格式
 					if (Integer.parseInt(code) == 200) {
-						ExcelUtil.getInstance().setCellbackGroundColor(TITLE_LINE_INDEX, RESULT_CODE, TITLE_LINE_INDEX+1+i, 1);
+						ExcelUtil.getInstance().setCellbackGroundColor(TITLE_LINE_INDEX, RESULT_CODE, TITLE_LINE_INDEX+1+i, 2);
 					}else{
 						ExcelUtil.getInstance().setCellbackGroundColor(TITLE_LINE_INDEX, RESULT_CODE, TITLE_LINE_INDEX+1+i, 0);
 					}

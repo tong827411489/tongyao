@@ -74,7 +74,8 @@ public class LoginAPI {
 					String expectedResult = map.get("ExpecteResult");
 					
 					String param = "account="+account+"&"+"password="+password;
-					Map<String, String> result = HttpRequester.sendPost(method, url, param);
+					String header = map.get("Header");
+					Map<String, String> result = HttpRequester.sendPost(method, url, param,header);
 					String code = result.get("map");
 					String rsTmp = result.get("result");
 					

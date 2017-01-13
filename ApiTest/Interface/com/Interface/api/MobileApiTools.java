@@ -17,7 +17,7 @@ public class MobileApiTools {
 	  * @return
 	  */
 	public static String getData(){
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:hh:ss");
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return sf.format(new Date());
 	}
 	

@@ -166,7 +166,7 @@ public class ExcelUtil {
 	 * 获取sheet最大行数
 	 */
 	public int getSheetMaxRow(){
-		int maxRow = -1;
+		int maxRow = -2;
 		if (createExcelSheet(sheetName) != null) {
 			maxRow = createExcelSheet(sheetName).getLastRowNum();
 		}
@@ -413,7 +413,7 @@ public class ExcelUtil {
 	public String[] readExcelColumnData(int titleLineIndex,String columnName){
 		String[] result = null;
 		int columnIndex = getColumnIndex(titleLineIndex, columnName);
-		int maxRow = getSheetMaxRow()-5;
+		int maxRow = getSheetMaxRow();
 		if (columnIndex != -1 && maxRow != -1) {
 			result = new String[maxRow-titleLineIndex];
 			for (int i = 0; i < maxRow-titleLineIndex; i++) {
@@ -477,13 +477,13 @@ public class ExcelUtil {
 		}
 		temp.setFillPattern(CellStyle.SOLID_FOREGROUND);
 		cell.setCellStyle(temp);
-		if (isFile(createFile())) {
-			FileOutputStream out = new FileOutputStream(createFile());
-			book.write(out);
-			out.close();
-		}else{
-			logger.debug("文件: " + filePath + ", 正被使用, 请关闭! 程序执行终止...");
-			System.exit(-1);
-		}
+//		if (isFile(createFile())) {
+//			FileOutputStream out = new FileOutputStream(createFile());
+//			book.write(out);
+//			out.close();
+//		}else{
+//			logger.debug("文件: " + filePath + ", 正被使用, 请关闭! 程序执行终止...");
+//			System.exit(-1);
+//		}
 	}
 }
