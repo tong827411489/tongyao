@@ -1,7 +1,10 @@
 package com.Interface.api;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
@@ -14,6 +17,8 @@ import javax.net.ssl.HttpsURLConnection;
 import org.apache.log4j.Logger;
 import org.jsoup.Connection.Method;
 
+import Decoder.BASE64Encoder;
+
 
 
 public class HttpRequester {
@@ -21,7 +26,7 @@ public class HttpRequester {
 	private static final Logger logger = Logger.getLogger(HttpRequester.class);
 	
 	  /**
-      * 向指定 URL 发送POST方法的请求
+      * 向指定 URL 发送指定的(POST/GET)方法的请求
       * 
       * @param method
       *            指定请求方法：GET, POST 等
@@ -29,6 +34,7 @@ public class HttpRequester {
       *            发送请求的 URL
       * @param param
       *            请求参数，请求参数是 name1=value1&name2=value2 的形式。
+      * @param header 请求头所带参数
 	  * @return result 返回结果
 	  */
 	public static Map<String, String> sendPost(String mothod,String url,String param,String header){
@@ -173,4 +179,32 @@ public class HttpRequester {
 	        }
 	        return outBuffer.toString();
 	    }
+	 
+	 
+	  /**
+	     * 图片转化成base64字符串
+	     * @param file 文件对象
+	     * @return
+	     */
+	    public static String getImageBase64(File file) {
+	        //将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+	        //String imgFile = "E:/image/001.png";//待处理的图片
+	        InputStream in = null;
+	        byte[] data = null;
+	        //读取图片字节数组
+	        try {
+	            in = new FileInputStream(file);
+	            data = new byte[in.available()];
+	            in.read(data);
+	            in.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        //对字节数组Base64编码
+	        BASE64Encoder encoder = new BASE64Encoder();
+	        String base64Data = encoder.encode(data);
+	       
+	        return base64Data;//返回Base64编码过的字节数组字符串
+	    }
+
 }
